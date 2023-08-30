@@ -1,0 +1,51 @@
+Proof of Concept (POC) Document: EC2 Instance Type Modification with CloudWatch and Lambda
+Objective
+The objective of this POC is to demonstrate the automatic modification of an EC2 instance type from t2.micro to t2.medium using AWS CloudWatch and Lambda.
+Prerequisites
+An AWS account with appropriate permissions to create and configure Lambda functions and CloudWatch Events.
+Basic knowledge of AWS services, including Lambda, EC2, and CloudWatch.
+Steps
+1. Set up an AWS account
+No code steps required. This is the initial setup process.
+2. Create an IAM role
+No code steps required. This is done through the AWS Management Console.
+3. Create a Lambda function
+Go to the Lambda service in the AWS Management Console.
+Click on "Create function".
+Choose "Author from scratch".
+Provide a name for your function.
+Select the Python runtime.
+Choose the IAM role you created in the previous step.
+Click on "Create function".
+In the function's code editor, paste the provided code that modifies the EC2 instance type.
+4. Configure the Lambda function
+In the function's configuration, scroll down to the "Designer" section.
+Click on "Add trigger".
+Select "CloudWatch Events" from the trigger options.
+Click on "Create a new rule".
+Configure the rule to trigger whenever an EC2 instance changes state to "running" and has an instance type of "t2.micro".
+Click on "Add".
+Save the function.
+5. Configure CloudWatch Event Rule
+Go to the CloudWatch service in the AWS Management Console.
+Click on "Events" in the left navigation pane.
+Click on "Create rule".
+Under "Event Source", select "Event Pattern".
+In the "Event pattern" editor, replace the existing content with the provided JSON code that filters for EC2 instance state changes and instance type "t2.micro".
+Click on "Save changes".
+Under "Targets", click on "Add target".
+Select "Lambda function" as the target.
+Choose the Lambda function you created in the previous step.
+Click on "Configure details".
+Provide a name for the rule.
+Click on "Create rule".
+6. Test the Lambda function
+Start an EC2 instance with the instance type t2.micro.
+Wait for the instance to reach the "running" state.
+Check the CloudWatch Logs for your Lambda function to see if it executed successfully and if any errors occurred.
+7. Verify the instance modification
+After the Lambda function is triggered, it should extract the instance ID from the event and attempt to modify the instance type to t2.medium.
+Check the CloudWatch Logs again to see if the modification was successful.
+You can also verify in the AWS Management Console by checking the instance's properties.
+Conclusion
+This POC demonstrates the automatic modification of an EC2 instance type from t2.micro to t2.medium using AWS CloudWatch and Lambda. By following the provided steps, you can set up the necessary resources and test the functionality of the solution.
