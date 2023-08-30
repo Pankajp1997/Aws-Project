@@ -1,0 +1,30 @@
+Set up an AWS account: No code steps required. This is the initial setup process.
+Create an IAM role: No code steps required. This is done through the AWS Management Console.
+Create a Lambda function:
+Go to the Lambda service in the AWS Management Console.
+Click on "Create function".
+Choose "Author from scratch".
+Provide a name for your function.
+Select the Python runtime.
+Choose the IAM role you created in step 2.
+Click on "Create function".
+In the function's code editor, write or copy-paste the code you provided in your initial question.
+Configure the Lambda function:
+In the function's configuration, scroll down to the "Designer" section.
+Click on "Add trigger".
+Select "CloudWatch Events" from the trigger options.
+Click on "Create a new rule".
+Configure the rule to trigger whenever a new volume is created. You can use a CloudWatch Events pattern to filter for the specific event you're interested in (e.g., volume creation with a specific tag).
+Click on "Add".
+Save the function.
+Test the Lambda function:
+Create a new volume in your AWS account that matches the trigger conditions you set in step 4.
+Go to the CloudWatch Logs service in the AWS Management Console.
+Find the log group associated with your Lambda function.
+Check the logs for your function to see if it executed successfully and if any errors occurred.
+Verify the volume modification:
+After the Lambda function is triggered, it should extract the volume ID from the event and attempt to modify the volume type to gp3.
+Check the CloudWatch Logs again to see if the modification was successful.
+You can also verify in the AWS Management Console by checking the volume's properties.
+
+
